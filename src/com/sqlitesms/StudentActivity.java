@@ -106,19 +106,19 @@ public class StudentActivity extends Activity {
 			}
 			break;
 		case R.id.btnViewAll:
-			c = myDB.rawQuery("SELECT * FROM student", null);
+			c = myDB.rawQuery("SELECT * FROM Student", null);
 			// Checking if no records found
 			if (c.getCount() == 0) {
 				Utils.toastItBaby("Error No Records Found", getBaseContext());
-				StringBuffer buffer = new StringBuffer();
-				while (c.moveToNext()) {
-					buffer.append("Rollno: " + c.getString(0) + "\n");
-					buffer.append("Name: " + c.getString(1) + "\n");
-					buffer.append("Marks: " + c.getString(2) + "\n\n");
-				}
-				// Displaying all records
-				showMessage("Student Details", buffer.toString());
 			}
+			StringBuffer buffer = new StringBuffer();
+			while (c.moveToNext()) {
+				buffer.append("Rollno: " + c.getString(0) + "\n");
+				buffer.append("Name: " + c.getString(1) + "\n");
+				buffer.append("Marks: " + c.getString(2) + "\n\n");
+			}
+			// Displaying all records
+			showMessage("Student Details", buffer.toString());
 			break;
 		case R.id.btnShow:
 			showMessage("Student Management Application",
